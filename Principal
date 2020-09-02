@@ -9,5 +9,10 @@ public class Principal {
         Scanner entrada = new Scanner(System.in); 
         String palabras []= {"","","","","","","","","",""};
         
+        System.out.print("Digite un letra: ");
+        letra = entrada.next().charAt(0);
+        if (letra <= 90 && letra >= 65)
+            letra += 32;
+            
     }
 }    
