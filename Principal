@@ -11,7 +11,7 @@ public class Principal {
         
         System.out.print("Digite un letra: ");
         letra = entrada.next().charAt(0);
-        if (letra <= 90 && letra >= 65)
+        if (letra <= 90 && letra >= 65)     //Convertir mayusculas en minusculas
             letra += 32;
             
     }
