@@ -42,7 +42,7 @@ public class Principal {
         word = palabras[randomGenerator];
         char discovered [] = new char[word.length()];
         System.out.println(word);
-        for(int i = 0; i < (word.length());i++){
+        for(int i = 0; i < (word.length());i++){ //llenar el arreglo con '_'
             discovered[i]='_';
         }    
         
@@ -50,7 +50,7 @@ public class Principal {
         
             System.out.print("Digite un letra: ");
             letra = entrada.next().charAt(0);
-            if (letra <= 90 && letra >= 65)
+            if (letra <= 90 && letra >= 65) //convertir mayusculas en minusculas
                 letra += 32;
             intentos += 1;
             encontrado = (acierto(letra,word,discovered,win,lose));
