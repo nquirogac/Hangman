@@ -5,14 +5,59 @@ import java.util.Scanner;
 
 public class Principal {
 
-    public static void main(String[] args) {
-        Scanner entrada = new Scanner(System.in); 
-        String palabras []= {"","","","","","","","","",""};
+    public static String acierto(char letra,String word, char discovered[],boolean win,boolean lose){
+        int aux,indice;
         
-        System.out.print("Digite un letra: ");
-        letra = entrada.next().charAt(0);
-        if (letra <= 90 && letra >= 65)     //Convertir mayusculas en minusculas
-            letra += 32;
+        String sub,cadenaMostrar="";
+        indice = word.indexOf(letra);
+        aux = indice;
             
+        if (indice != -1){
+            sub = word;
+            while(indice != -1 && sub.length()>1){
+                discovered[aux] = letra;
+                if (sub.length()!=1){
+                    sub = word.substring(aux + 1, word.length());
+                    indice = sub.indexOf(letra);
+                    if (indice !=-1){aux+= ++indice;}
+                    } 
+            } 
+        }    
+        for(int i = 0; i < (word.length());i++){
+            cadenaMostrar += discovered[i]+" ";
+            }
+        return cadenaMostrar;
     }
-}    
+    public static void main(String[] args) {
+        
+        Scanner entrada = new Scanner(System.in);
+        String palabras []= {"papaya","libro","programa","metodo","ejercicio","manzana","pintura","minimalista","azucar","internacional"};
+        Random random = new Random();
+        boolean win=false,lose=true;
+        int randomGenerator, errors = 0,intentos = 0;
+        String word,encontrado;
+        char letra;
+        
+        randomGenerator = random.nextInt(palabras.length);
+        word = palabras[randomGenerator];
+        char discovered [] = new char[word.length()];
+        System.out.println(word);
+        for(int i = 0; i < (word.length());i++){
+            discovered[i]='_';
+        }    
+        
+        while (errors<6 && win==false){ 
+        
+            System.out.print("Digite un letra: ");
+            letra = entrada.next().charAt(0);
+            if (letra <= 90 && letra >= 65)
+                letra += 32;
+            intentos += 1;
+            encontrado = (acierto(letra,word,discovered,win,lose));
+            System.out.println(encontrado);
+            if (encontrado.indexOf('_')==-1){
+                win = true;
+            }
+        }
+    }
+}
