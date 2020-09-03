@@ -1,11 +1,19 @@
 package Hangman;
 
+
 import java.util.Random;
 import java.util.Scanner;
 
 public class Principal {
-
-    public static String acierto(char letra,String word, char discovered[],boolean win,boolean lose){
+    public static void error(int NErrores,char []monacho) {
+        
+        NErrores--;
+        for (int i=0;i<=NErrores;i++){
+            System.out.print(monacho[i]);
+        }
+        System.out.println();
+    }
+    public static String acierto(char letra,String word, char discovered[]){
         int aux,indice;
         
         String sub,cadenaMostrar="";
@@ -37,7 +45,7 @@ public class Principal {
         int randomGenerator, errors = 0,intentos = 0;
         String word,encontrado;
         char letra;
-        
+        char []figura={'q','(','x','_','x',')','p'};
         randomGenerator = random.nextInt(palabras.length);
         word = palabras[randomGenerator];
         char discovered [] = new char[word.length()];
@@ -46,17 +54,28 @@ public class Principal {
             discovered[i]='_';
         }    
         
-        while (errors<6 && win==false){ 
+        while (errors<7 && win==false){ 
         
             System.out.print("Digite un letra: ");
             letra = entrada.next().charAt(0);
             if (letra <= 90 && letra >= 65) //convertir mayusculas en minusculas
                 letra += 32;
             intentos += 1;
-            encontrado = (acierto(letra,word,discovered,win,lose));
+            int posicion=word.indexOf(letra);
+            if (posicion==-1){
+                errors++;
+                error(errors,figura);
+            }else {
+                error(errors,figura);
+            }
+            encontrado = (acierto(letra,word,discovered));
             System.out.println(encontrado);
             if (encontrado.indexOf('_')==-1){
                 win = true;
+            }
+            System.out.println(errors);
+            if (errors==7){
+                System.out.println("Fin del juego Perdiste");
             }
         }
     }
