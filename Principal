@@ -73,7 +73,6 @@ public class Principal {
             if (encontrado.indexOf('_')==-1){
                 win = true;
             }
-            System.out.println(errors);
             if (errors==7){
                 System.out.println("Fin del juego Perdiste");
             }
