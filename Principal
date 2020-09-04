@@ -53,14 +53,16 @@ public class Principal {
         for(int i = 0; i < (word.length());i++){ //llenar el arreglo con '_'
             discovered[i]='_';
         }    
-        
+        String cadena = "";
         while (errors<7 && win==false){ 
-        
-            System.out.print("Digite una letra: ");
+            System.out.println("Digite una letra: ");
+            System.out.println("Letras Utilizadas: "+cadena);
             letra = entrada.next().charAt(0);
             if (letra <= 90 && letra >= 65) //convertir mayusculas en minusculas
                 letra += 32;
             intentos += 1;
+            cadena = (cadena +" "+ letra);
+            
             int posicion=word.indexOf(letra);
             if (posicion==-1){
                 errors++;
@@ -68,6 +70,7 @@ public class Principal {
             }else {
                 error(errors,figura);
             }
+          
             encontrado = (acierto(letra,word,discovered));
             System.out.println(encontrado);
             if (encontrado.indexOf('_')==-1){
