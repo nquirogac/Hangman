@@ -75,8 +75,7 @@ public class Principal {
             }
             if (errors==7){
                 System.out.println("Fin del juego Perdiste!!La palabra secreta era: "+word);
-            }else {
-            System.out.println("Felicidades lo has Logrado!!");
+            }
         }
     }
 }
