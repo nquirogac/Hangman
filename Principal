@@ -49,19 +49,19 @@ public class Principal {
         randomGenerator = random.nextInt(palabras.length);
         word = palabras[randomGenerator];
         char discovered [] = new char[word.length()];
-        System.out.println(word);
         for(int i = 0; i < (word.length());i++){ //llenar el arreglo con '_'
             discovered[i]='_';
         }    
         String cadena = "";
         while (errors<7 && win==false){ 
-            System.out.println("Digite una letra: ");
-            System.out.println("Letras Utilizadas: "+cadena);
+            System.out.print("Digite una letra: ");
             letra = entrada.next().charAt(0);
             if (letra <= 90 && letra >= 65) //convertir mayusculas en minusculas
                 letra += 32;
             intentos += 1;
+            
             cadena = (cadena +" "+ letra);
+            System.out.println("Letras Utilizadas: "+cadena);
             
             int posicion=word.indexOf(letra);
             if (posicion==-1){
@@ -73,8 +73,10 @@ public class Principal {
           
             encontrado = (acierto(letra,word,discovered));
             System.out.println(encontrado);
+            System.out.println();
             if (encontrado.indexOf('_')==-1){
                 win = true;
+                System.out.println("Ganaste!!");
             }
             if (errors==7){
                 System.out.println("Fin del juego Perdiste!!La palabra secreta era: "+word);
