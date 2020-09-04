@@ -56,7 +56,7 @@ public class Principal {
         
         while (errors<7 && win==false){ 
         
-            System.out.print("Digite un letra: ");
+            System.out.print("Digite una letra: ");
             letra = entrada.next().charAt(0);
             if (letra <= 90 && letra >= 65) //convertir mayusculas en minusculas
                 letra += 32;
@@ -75,7 +75,8 @@ public class Principal {
             }
             if (errors==7){
                 System.out.println("Fin del juego Perdiste!!La palabra secreta era: "+word);
-            }
+            }else {
+            System.out.println("Felicidades lo has Logrado!!");
         }
     }
 }
